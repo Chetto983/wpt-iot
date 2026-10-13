@@ -26,6 +26,8 @@ export const PROCESS_FIELDS = [
   'currentPhase',
   'machineStatus',
   'materialInputWeight',
+  'materialOutputWeight', // S1_I_DATO_58
+  'container',            // S1_I_DATO_72
   'completedCycles',
 ] as const satisfies ReadonlyArray<keyof IMachineSnapshot>;
 
@@ -35,7 +37,6 @@ export const JOB_FIELDS = [
   'supervisor',
   'orderNumber',
   'serialNumber',
-  'container',             // V03 — INT slot S1_I_DATO_72
 ] as const satisfies ReadonlyArray<keyof IMachineSnapshot>;
 
 /** WPT-only technical signal groups -- each group has a translation key and field list */

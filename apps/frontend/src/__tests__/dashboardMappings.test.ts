@@ -8,7 +8,7 @@ vi.mock('next-intl', () => ({
 
 import itMessages from '../../messages/it.json';
 import { useDashboardFormatters } from '@/lib/dashboard/formatters';
-import { PROCESS_FIELDS, TECHNICAL_GROUPS } from '@/lib/dashboard/fields';
+import { JOB_FIELDS, PROCESS_FIELDS, TECHNICAL_GROUPS } from '@/lib/dashboard/fields';
 
 describe('dashboard PLC mappings', () => {
   it('formats the live Raspberry values with their PLC labels', () => {
@@ -34,6 +34,16 @@ describe('dashboard PLC mappings', () => {
     expect(itMessages.dashboard.machineStatuses.SHREDDING).toBe('Triturazione');
     expect(itMessages.dashboard.cycleTypes.MILK).toBe('Latte');
     expect(PROCESS_FIELDS).not.toContain('cycleStatus');
+  });
+
+  it('shows bins and processed material weight in process data', () => {
+    expect(PROCESS_FIELDS).toContain('container');
+    expect(PROCESS_FIELDS).toContain('materialOutputWeight');
+    expect(JOB_FIELDS).not.toContain('container');
+    expect(itMessages.dashboard.fields.container).toBe('Bidoni');
+    expect(itMessages.dashboard.fields.materialOutputWeight).toBe(
+      'Peso materiale trattato',
+    );
   });
 
   it('shows thermal bands 01..03 and excludes constant/reserved signals', () => {

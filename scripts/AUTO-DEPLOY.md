@@ -1,7 +1,7 @@
 # WPT IoT — Auto Deploy Setup
 
 This is the **golden master → all customers** auto-update pipeline. After every
-push to `chetto1983/wpt-iot` master, the golden master polls GitHub, rebuilds
+push to `Chetto983/wpt-iot` master, the golden master polls GitHub, rebuilds
 a fresh offline bundle, and ships it to every customer edge PC listed in
 `/etc/wpt-auto-deploy/customers.conf` — fully unattended, no human in the loop.
 
@@ -9,7 +9,7 @@ a fresh offline bundle, and ships it to every customer edge PC listed in
 
 ```text
                     push to master
-   developer ──────────────────────► github.com/chetto1983/wpt-iot
+   developer ──────────────────────► github.com/Chetto983/wpt-iot
                                               │
                                               │ git fetch (every 5 min)
                                               ▼
@@ -63,7 +63,7 @@ GHCR access. The bundle ships everything they need.
 ```bash
 sudo mkdir -p /opt/wpt-deploy
 sudo chown $USER /opt/wpt-deploy
-git clone https://github.com/chetto1983/wpt-iot.git /opt/wpt-deploy/wpt-iot
+git clone https://github.com/Chetto983/wpt-iot.git /opt/wpt-deploy/wpt-iot
 ```
 
 ### Step 2 — Install the systemd unit + timer

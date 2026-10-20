@@ -5,7 +5,7 @@ set -euo pipefail
 # WPT IoT - Production Bootstrap Installer
 # =============================================================================
 
-REPO_OWNER="${REPO_OWNER:-chetto1983}"
+REPO_OWNER="${REPO_OWNER:-chetto983}"
 REPO_NAME="${REPO_NAME:-wpt-iot}"
 BRANCH="${BRANCH:-master}"
 INSTALL_DIR="${INSTALL_DIR:-/opt/wpt-iot}"

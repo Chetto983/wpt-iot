@@ -11,7 +11,7 @@ set -euo pipefail
 # behind TLS on https://wpt.local.
 #
 # Run on the target box:
-#   curl -fsSL https://raw.githubusercontent.com/chetto1983/wpt-iot/master/scripts/install-enduser.sh | sudo bash
+#   curl -fsSL https://raw.githubusercontent.com/chetto983/wpt-iot/master/scripts/install-enduser.sh | sudo bash
 #
 # Prerequisites on the target:
 #   - 64-bit Linux (Debian/RPi OS Bookworm, Ubuntu 22.04/24.04). arm64 or amd64.
@@ -19,11 +19,12 @@ set -euo pipefail
 #   - A LAN IP reachable by operator devices.
 #
 # Pin an immutable image digest instead of :latest by exporting before running:
-#   WPT_BACKEND_IMAGE=ghcr.io/chetto1983/wpt-backend@sha256:...
-#   WPT_FRONTEND_IMAGE=ghcr.io/chetto1983/wpt-frontend@sha256:...
+#   WPT_BACKEND_IMAGE=ghcr.io/chetto983/wpt-backend@sha256:...
+#   WPT_FRONTEND_IMAGE=ghcr.io/chetto983/wpt-frontend@sha256:...
 # =============================================================================
 
-REPO_OWNER="${REPO_OWNER:-chetto1983}"
+# Lowercase: it also names the GHCR images, and image names must be lowercase.
+REPO_OWNER="${REPO_OWNER:-chetto983}"
 REPO_NAME="${REPO_NAME:-wpt-iot}"
 BRANCH="${BRANCH:-master}"
 INSTALL_DIR="${INSTALL_DIR:-/opt/wpt-iot}"

@@ -36,7 +36,7 @@ Node.js is not required on a remote target. For a new install, the wizard asks t
 The direct Linux Bash fallback remains available:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/chetto1983/wpt-iot/master/scripts/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/chetto983/wpt-iot/master/scripts/install.sh | sudo bash
 ```
 
 For an air-gapped target, run `scripts/build-bundle.sh` on an Internet-connected Linux host, transfer and extract the resulting tarball, then run:
@@ -217,7 +217,7 @@ The npm registry requires a package to exist before a trusted publisher can be a
 npm install --global "npm@^11.15.0"
 npm login
 npm publish ./packages/create-wpt-iot --access public --provenance=false
-npm trust github create-wpt-iot --file create-wpt-iot.yml --repo chetto1983/wpt-iot --allow-publish
+npm trust github create-wpt-iot --file create-wpt-iot.yml --repo Chetto983/wpt-iot --allow-publish
 npm trust list create-wpt-iot
 ```
 

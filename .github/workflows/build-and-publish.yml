@@ -59,6 +59,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Image names must be lowercase and the owner login may not be (Chetto983).
+      - name: Image name
+        run: echo "IMAGE=${{ env.REGISTRY }}/${GITHUB_REPOSITORY_OWNER,,}/wpt-${{ matrix.service }}" >> "$GITHUB_ENV"
+
       - name: Platform slug
         id: platform
         run: echo "slug=$(echo '${{ matrix.platform }}' | sed 's|/|-|g')" >> "$GITHUB_OUTPUT"
@@ -74,7 +78,7 @@ jobs:
           # to empty so the bundle uses relative URLs (same-origin via nginx). The
           # image stays host/IP-agnostic; baking an absolute URL would break
           # LAN-IP / wpt-<serial>.local access (CORS removed in Phase 37.3).
-          outputs: type=image,name=${{ env.REGISTRY }}/${{ github.repository_owner }}/wpt-${{ matrix.service }},push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,name=${{ env.IMAGE }},push-by-digest=true,name-canonical=true,push=true
           cache-from: type=gha,scope=${{ matrix.service }}-${{ steps.platform.outputs.slug }}
           cache-to: type=gha,mode=max,scope=${{ matrix.service }}-${{ steps.platform.outputs.slug }}
 
@@ -117,11 +121,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Image names must be lowercase and the owner login may not be (Chetto983).
+      - name: Image name
+        run: echo "IMAGE=${{ env.REGISTRY }}/${GITHUB_REPOSITORY_OWNER,,}/wpt-${{ matrix.service }}" >> "$GITHUB_ENV"
+
       - name: Compute image tags
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/wpt-${{ matrix.service }}
+          images: ${{ env.IMAGE }}
           tags: |
             type=raw,value=latest
             type=sha,prefix=master-,format=short
@@ -132,7 +140,7 @@ jobs:
         run: |
           docker buildx imagetools create \
             $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(for f in *.digest; do echo "${{ env.REGISTRY }}/${{ github.repository_owner }}/wpt-${{ matrix.service }}@$(cat "$f")"; done)
+            $(for f in *.digest; do echo "${{ env.IMAGE }}@$(cat "$f")"; done)
 
       - name: Inspect manifest
-        run: docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ github.repository_owner }}/wpt-${{ matrix.service }}:${{ steps.meta.outputs.version }}
+        run: docker buildx imagetools inspect ${{ env.IMAGE }}:${{ steps.meta.outputs.version }}

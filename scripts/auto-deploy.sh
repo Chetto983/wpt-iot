@@ -5,7 +5,7 @@
 # Runs on a Linux GOLDEN MASTER host that:
 #   1. Has internet access (Docker Hub + npm registry + GitHub reachable)
 #   2. Has Docker Engine + Compose v2 installed
-#   3. Has a checked-out clone of chetto1983/wpt-iot at REPO_DIR
+#   3. Has a checked-out clone of Chetto983/wpt-iot at REPO_DIR
 #   4. Has SSH keys to all customer edge PCs (passwordless or via ssh-agent)
 #
 # What it does, on every invocation:
@@ -61,7 +61,7 @@ mkdir -p "${BUNDLE_DIR}" "$(dirname "${LOG_FILE}")"
 [[ -d "${REPO_DIR}/.git" ]] || {
   log_err "REPO_DIR (${REPO_DIR}) is not a git repo. Clone it first:"
   log_err "  sudo mkdir -p $(dirname ${REPO_DIR}) && sudo chown \$USER $(dirname ${REPO_DIR})"
-  log_err "  git clone https://github.com/chetto1983/wpt-iot.git ${REPO_DIR}"
+  log_err "  git clone https://github.com/Chetto983/wpt-iot.git ${REPO_DIR}"
   exit 1
 }
 

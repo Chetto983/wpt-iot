@@ -1,6 +1,6 @@
 [Unit]
 Description=WPT IoT — Auto Deploy (poll origin/master, rebuild, ship)
-Documentation=https://github.com/chetto1983/wpt-iot/blob/master/scripts/AUTO-DEPLOY.md
+Documentation=https://github.com/Chetto983/wpt-iot/blob/master/scripts/AUTO-DEPLOY.md
 Wants=network-online.target docker.service
 After=network-online.target docker.service
 ConditionPathExists=/opt/wpt-deploy/wpt-iot/.git

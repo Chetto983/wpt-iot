@@ -11,7 +11,7 @@ if [[ -f "${SCRIPT_DIR}/install-prod.sh" ]]; then
   exec bash "${SCRIPT_DIR}/install-prod.sh" "$@"
 fi
 
-REPO_OWNER="${REPO_OWNER:-chetto1983}"
+REPO_OWNER="${REPO_OWNER:-chetto983}"
 REPO_NAME="${REPO_NAME:-wpt-iot}"
 BRANCH="${BRANCH:-master}"
 RAW_URL="https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/scripts/install.sh"

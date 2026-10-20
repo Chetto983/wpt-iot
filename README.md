@@ -23,7 +23,7 @@ Air-gapped bundle install:          scripts/install-offline.sh
 For the direct online fallback on Linux:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/chetto1983/wpt-iot/master/scripts/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/chetto983/wpt-iot/master/scripts/install.sh | sudo bash
 ```
 
 For an air-gapped target, build and transfer the repository bundle, extract it, then run its `install-offline.sh` with `sudo`. See [`scripts/RUNBOOK.md`](scripts/RUNBOOK.md) for the complete procedure.

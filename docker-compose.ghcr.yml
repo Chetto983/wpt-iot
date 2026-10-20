@@ -8,7 +8,7 @@
 #
 # Docker auto-selects the arm64 variant on the Pilz IndustrialPI 4 / Raspberry Pi.
 # Pin an immutable digest by overriding WPT_BACKEND_IMAGE / WPT_FRONTEND_IMAGE
-# in .env, e.g. ghcr.io/chetto1983/wpt-backend@sha256:<digest>.
+# in .env, e.g. ghcr.io/chetto983/wpt-backend@sha256:<digest>.
 #
 # The backend keeps network_mode: host — PLC UDP (9090-9093) requires it.
 # =============================================================================
@@ -57,7 +57,7 @@ services:
   # means Docker DNS doesn't resolve service names — the backend uses
   # 127.0.0.1 for db (bound to loopback above).
   backend:
-    image: ${WPT_BACKEND_IMAGE:-ghcr.io/chetto1983/wpt-backend:latest}
+    image: ${WPT_BACKEND_IMAGE:-ghcr.io/chetto983/wpt-backend:latest}
     network_mode: host
     depends_on:
       db:
@@ -104,7 +104,7 @@ services:
         max-file: "3"
 
   frontend:
-    image: ${WPT_FRONTEND_IMAGE:-ghcr.io/chetto1983/wpt-frontend:latest}
+    image: ${WPT_FRONTEND_IMAGE:-ghcr.io/chetto983/wpt-frontend:latest}
     # Same-origin bundle (relative URLs); nginx routes /api/* to the backend.
     # The image is IP/hostname-agnostic — no rebuild on LAN/IP change.
     depends_on:

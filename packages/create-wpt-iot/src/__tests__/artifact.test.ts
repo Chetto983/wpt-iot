@@ -8,7 +8,7 @@ import { downloadVerifiedInstaller } from '../artifact.js';
 
 const body = '#!/usr/bin/env bash\necho installer\n';
 const sha256 = createHash('sha256').update(body).digest('hex');
-const manifest = { owner: 'chetto1983', repository: 'wpt-iot', ref: 'abc123', sha256 };
+const manifest = { owner: 'Chetto983', repository: 'wpt-iot', ref: 'abc123', sha256 };
 const roots: string[] = [];
 
 afterEach(async () => {
@@ -29,7 +29,7 @@ describe('installer artifact', () => {
     const artifact = await downloadVerifiedInstaller(manifest, { fetch, tempRoot: root });
 
     expect(fetch).toHaveBeenCalledWith(
-      'https://raw.githubusercontent.com/chetto1983/wpt-iot/abc123/scripts/install-enduser.sh',
+      'https://raw.githubusercontent.com/Chetto983/wpt-iot/abc123/scripts/install-enduser.sh',
       { redirect: 'error' },
     );
     expect(await readFile(artifact.path, 'utf8')).toBe(body);
